@@ -18,7 +18,7 @@ public class FaktorialServiceImpl {
 
     @Transactional
     public List<Faktorial> getById(@PathParam("id") int id) {
-        String sql = "SELECT f.id, f.n, f.factorial FROM faktorial f WHERE f.n >= :id";
+        String sql = "SELECT f.id, f.n, f.factorial FROM faktorial f WHERE f.n <= :id";
         Query query = entityManager.createNativeQuery(sql, Faktorial.class);
         query.setParameter("id", id);
         return query.getResultList();
